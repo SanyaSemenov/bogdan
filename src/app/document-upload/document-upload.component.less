@@ -1,0 +1,80 @@
+:host {
+    display: block;
+  }
+  .docUpload__title {
+    font-size: 17px;
+    line-height: normal;
+    font-weight: 500;
+  }
+  .docUpload__field {
+    border: 1px dashed #999;
+    border-radius: 5px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    min-height: 50px;
+  }
+  .docUpload__field--drag {
+    opacity: 0.7;
+  }
+  .docUpload__field--hasFile .docUpload__dropZone{
+    display: none;
+  }
+  .docUpload__field--hasFile .docUpload__preview {
+    display: block;
+  }
+  .docUpload__field--invalid {
+    border-color: crimson;
+  }
+  .docUpload__preview {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+  }
+  .docUpload__preview__file + .docUpload__preview__file {
+    margin-top: 10px;
+  }
+  .docUpload__preview__delete {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  .docUpload__preview__delete::before,
+  .docUpload__preview__delete::after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 14px;
+    background: crimson;
+    top: 50%;
+    left: 50%;
+  }
+  .docUpload__preview__delete::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .docUpload__preview__delete::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+  .docUpload__dropZone {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .docUpload--loading .docUpload__field {
+    border-style: solid;
+  }
+  

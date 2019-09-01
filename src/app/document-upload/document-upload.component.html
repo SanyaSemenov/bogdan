@@ -1,0 +1,31 @@
+<div class="docUpload">
+  <div class="docUpload__title">Заголовок</div>
+  <div 
+    class="docUpload__field"
+    [class.docUpload__field--drag]="isDragOver"
+    [class.docUpload__field--invalid]="ngControl.touched && ngControl.dirty && ngControl.invalid"
+    [class.docUpload__field--hasFile]="ngControl.valid">
+    <div class="docUpload__init" *ngIf="ngControl.invalid">
+      <ng-content></ng-content>
+    </div>
+    <label 
+      for="{{'uploadField__' + type?.type}}"
+      class="docUpload__dropZone"
+      (dragenter)="onDragEnter($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="ondrop($event)">
+    </label>
+    <div class="docUpload__preview" *ngIf="fileNames">
+      <ng-container *ngFor="let file of fileNames">
+        <div class="docUpload__preview__file">{{file}}</div>
+      </ng-container>
+      <div class="docUpload__preview__delete" (click)="clearFile()"></div>
+    </div>
+  </div>
+  <input 
+    id="{{'uploadField__' + type?.type}}"
+    (change)="uploadFiles($event)"
+    type="file"
+    multiple
+    hidden>
+</div>
