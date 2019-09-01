@@ -15,8 +15,8 @@
       (dragleave)="onDragLeave($event)"
       (drop)="ondrop($event)">
     </label>
-    <div class="docUpload__preview" *ngIf="fileNames">
-      <ng-container *ngFor="let file of fileNames">
+    <div class="docUpload__preview" *ngIf="files">
+      <ng-container *ngFor="let file of files | fileName">
         <div class="docUpload__preview__file">{{file}}</div>
       </ng-container>
       <div class="docUpload__preview__delete" (click)="clearFile()"></div>

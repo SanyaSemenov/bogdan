@@ -18,7 +18,6 @@ const noop = () => { };
 })
 export class DocumentUploadComponent implements OnInit, OnDestroy, ControlValueAccessor {
   public isDragOver: boolean = false;
-  public fileNames: string[];
   private _files: File[];
   get files(): File[] {
     return this._files;
@@ -27,10 +26,7 @@ export class DocumentUploadComponent implements OnInit, OnDestroy, ControlValueA
     this._files = value;
     this.onChange(this._files);
     if (this._files) {
-      this.fileNames = [].map.call(this._files, x => x.name);
       this.onTouched();
-    } else {
-      this.fileNames = null;
     }
   }
   @Input() public type: AdditionalDocumentType;
@@ -69,7 +65,6 @@ export class DocumentUploadComponent implements OnInit, OnDestroy, ControlValueA
     const files = e.dataTransfer.files;
     if (files.length > 0) {
       this.uploadFiles({ target: { files } });
-      this.fileNames = [].map.call(files, x => x.name);
     }
   }
   public uploadFiles(event = { target: { files: this._files } }) {
@@ -80,7 +75,6 @@ export class DocumentUploadComponent implements OnInit, OnDestroy, ControlValueA
   }
   public clearFile() {
     this.files = null;
-    this.fileNames = null;
   }
   public writeValue(obj: any): void {
     this._files = obj;
